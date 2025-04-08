@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { TaskService } from '../../service/TaskService';  // Ensure correct path to TaskService
-import { Task } from '../../model/Task';  // Ensure correct path to Task model
+import { TaskService } from '../../service/TaskService';  
+import { Task } from '../../model/Task'; 
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -9,31 +9,31 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./task-form.component.css']
 })
 export class TaskFormComponent {
-  title: string = '';  // Task title input
-  description: string = '';  // Task description input
-  status: string = 'TO_DO';  // Default status for the task
+  title: string = '';  
+  description: string = '';  
+  status: string = 'TO_DO';  
 
   constructor(private taskService: TaskService) {}
 
   addTask() {
-    // Check if the title is provided
+    
     if (!this.title) {
       console.error('Title is required');
-      return;  // Exit if title is missing
+      return;  
     }
 
-    // Set the createdAt to the current date and time
-    const createdAtDate = new Date();  // Current date and time
+    
+    const createdAtDate = new Date();  
 
-    // Prepare the new task object with the provided values
+    
     const newTask: Task = {
       title: this.title,
-      description: this.description,  // Optional description
-      status: this.status,  // Status of the task
-      createdAt: createdAtDate  // Current date and time
+      description: this.description,  
+      status: this.status,  
+      createdAt: createdAtDate 
     };
 
-    // Call the TaskService to add the new task
+    
     this.taskService.addTask(newTask).subscribe({
       next: (response) => {
         console.log('Task added successfully:', response);

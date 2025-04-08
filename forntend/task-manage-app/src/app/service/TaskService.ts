@@ -16,12 +16,12 @@ export class TaskService{
         return this.http.get<Task[]>("http://localhost:8080/task/get-all");
       }
 
-      private apiUrl = 'http://localhost:8080/task/add';  // Replace with your actual backend URL
+      private apiUrl = 'http://localhost:8080/task/add';  
 
       
     
       addTask(task: Task):Observable<Task> {
-        return this.http.post<Task>(this.apiUrl, task);  // POST request to backend API
+        return this.http.post<Task>(this.apiUrl, task);  
       }
 
 }
